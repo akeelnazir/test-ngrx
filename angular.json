@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "test-hcl"
+  "defaultProject": "test-hcl",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
