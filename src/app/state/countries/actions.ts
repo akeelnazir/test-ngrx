@@ -10,6 +10,7 @@ export enum CountryActionTypes {
 
 export class Load implements Action {
   readonly type = CountryActionTypes.Load;
+  constructor(public region: string) {}
 }
 
 export class LoadSuccess implements Action {

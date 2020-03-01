@@ -13,12 +13,10 @@ export class CountriesFacade {
   readonly getSelectedCountryId$ = this.store.select(countriesSelectors.getSelectedCountryId);
   readonly getSelectedCountry$ = this.store.select(countriesSelectors.getSelectedCountry);
 
-  constructor(private store: Store<CountriesState>) {
-    this.loadCountries();
-  }
+  constructor(private store: Store<CountriesState>) {}
 
-  loadCountries(): void {
-    this.store.dispatch(new countriesActions.Load());
+  loadCountries(region: string): void {
+    this.store.dispatch(new countriesActions.Load(region));
   }
 
   selectCountry(region: Country) {

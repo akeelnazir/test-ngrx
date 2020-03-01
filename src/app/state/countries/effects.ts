@@ -12,7 +12,7 @@ export class CountryEffects {
   @Effect()
   getCountries$ = this.actions$.pipe(
     ofType(countryActions.CountryActionTypes.Load),
-    switchMap(() => this.service.countries$.pipe(
+    switchMap((action: countryActions.Load) => this.service.countries$(action.region).pipe(
       map((countries: Country[]) => {
         return new countryActions.LoadSuccess(countries);
       })

@@ -25,7 +25,7 @@ export function countriesReducer(state = initialCountriesState, action: CountryA
     case CountryActionTypes.InitCurrentCountry:
       return {
         ...state,
-        selectedCountryId: 0
+        selectedCountryId: null
       };
 
     default:

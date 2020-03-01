@@ -8,19 +8,40 @@
   <br>
 
   <ng-container *ngIf="(region$ | async) as region">
-    <pre>
-      {{ region | json }}
-    </pre>
+    <ng-container *ngIf="(countriesLoadingStatus$ | async) !== (false || null || undefined)">
+      <app-dropdown
+        [label]="'Countries'"
+        [items]="countries$ | async"
+        (selectionChanged)="onCountrySelectionChange($event)"
+      ></app-dropdown>
+    </ng-container>
   </ng-container>
 
-  <ng-container *ngIf="!(countriesLoadingStatus$ | async) as loadingSuccess">
-    <app-dropdown
-      *ngIf="loadingSuccess"
-      [label]="'Countries'"
-      [items]="countries$ | async"
-      (selectionChanged)="onCountrySelectionChange($event)"
-    ></app-dropdown>
-  </ng-container>
+  <ng-container *ngIf="(country$ | async) as country">
+    <mat-table *ngIf="country.length" [dataSource]="country" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let r"> {{r.name}} </mat-cell>
+      </ng-container>
 
+      <ng-container matColumnDef="capital">
+        <mat-header-cell *matHeaderCellDef> Capital </mat-header-cell>
+        <mat-cell *matCellDef="let r"> {{r.capital}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="population">
+        <mat-header-cell *matHeaderCellDef> Population </mat-header-cell>
+        <mat-cell *matCellDef="let r"> {{r.population | number }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="flag">
+        <mat-header-cell *matHeaderCellDef> Flag </mat-header-cell>
+        <mat-cell *matCellDef="let r"> {{r.flag}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </ng-container>
 
 </mat-card>

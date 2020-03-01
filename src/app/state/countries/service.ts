@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CountriesService {
-  get countries$(): Observable<any> {
-    return this.http.get('https://restcountries.eu/rest/v2/region/europe');
+  countries$(region: string): Observable<any> {
+    return this.http.get(`https://restcountries.eu/rest/v2/region/${region}`);
   }
 
   constructor(private http: HttpClient) {}

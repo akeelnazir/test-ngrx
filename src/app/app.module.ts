@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { StateModule } from './state/state.module';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
     MatInputModule,
     MatSelectModule,
     StateModule,
-    FormsModule
+    FormsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
