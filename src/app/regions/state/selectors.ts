@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import * as fromRegions from './reducers';
+import * as fromRegions from './state';
 
-export const getRegionsFeatureState = createFeatureSelector<fromRegions.RegionState>('regions');
+export const getRegionsFeatureState = createFeatureSelector<fromRegions.RegionsState>('regions');
 
 export const getRegionLoadingStatus = createSelector(
   getRegionsFeatureState,
@@ -22,11 +22,7 @@ export const getSelectedRegion = createSelector(
   getRegionsFeatureState,
   getSelectedRegionId,
   (state, selectedRegionId) => {
-    if (selectedRegionId === 0) {
-      return null;
-    } else {
-      return selectedRegionId ? state.regions.find(r => r.id === selectedRegionId) : null;
-    }
+    return selectedRegionId !== null ? state.regions.find(r => r.id === selectedRegionId) : null;
   }
 );
 

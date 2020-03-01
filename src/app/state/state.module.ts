@@ -2,10 +2,11 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { environment } from '../../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+import { environment } from '../../environments/environment';
 import { appReducer } from './app.reducer';
-import { RegionEffects } from './regions/effects';
+import { RegionEffects } from '../regions/state/effects';
 
 @NgModule({
   imports: [

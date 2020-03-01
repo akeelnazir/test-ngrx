@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { RegionsComponent } from './regions/regions.component';
 import { CountriesComponent } from './countries/countries.component';
 import { StateModule } from './state/state.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { StateModule } from './state/state.module';
     MatCardModule,
     MatInputModule,
     MatSelectModule,
-    StateModule
+    StateModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

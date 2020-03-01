@@ -1,5 +1,5 @@
-import { RegionState } from './regions/reducers';
+import { RegionsState } from '../regions/state/state';
 
 export interface AppState {
-  regions: RegionState;
+  regions: RegionsState;
 }

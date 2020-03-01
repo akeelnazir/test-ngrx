@@ -1,19 +1,7 @@
 import { RegionActions, RegionActionTypes } from './actions';
-import { Region } from './model';
+import { initialRegionsState, RegionsState } from './state';
 
-export interface RegionState {
-  selectedRegionId: number | null;
-  regions: Region[];
-  loading: boolean;
-}
-
-export const initialRegionsState: RegionState = {
-  selectedRegionId: null,
-  regions: [],
-  loading: false
-};
-
-export function regionsReducer(state = initialRegionsState, action: RegionActions): RegionState {
+export function regionsReducer(state = initialRegionsState, action: RegionActions): RegionsState {
   switch (action.type) {
     case RegionActionTypes.Load:
       return {
