@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Region } from '../../regions/state/model';
 
 @Component({
   selector: 'app-dropdown',
@@ -9,7 +8,7 @@ import { Region } from '../../regions/state/model';
 export class DropdownComponent {
   @Input() label: string;
   @Input() items;
-  @Output() selectionChanged = new EventEmitter<Region>();
+  @Output() selectionChanged = new EventEmitter<any>();
 
   constructor() {}
 }

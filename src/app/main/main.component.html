@@ -1,0 +1,26 @@
+<mat-card>
+  <app-dropdown
+    [label]="'Regions'"
+    [items]="regions$ | async"
+    (selectionChanged)="onRegionSelectionChange($event)"
+  ></app-dropdown>
+
+  <br>
+
+  <ng-container *ngIf="(region$ | async) as region">
+    <pre>
+      {{ region | json }}
+    </pre>
+  </ng-container>
+
+  <ng-container *ngIf="!(countriesLoadingStatus$ | async) as loadingSuccess">
+    <app-dropdown
+      *ngIf="loadingSuccess"
+      [label]="'Countries'"
+      [items]="countries$ | async"
+      (selectionChanged)="onCountrySelectionChange($event)"
+    ></app-dropdown>
+  </ng-container>
+
+
+</mat-card>

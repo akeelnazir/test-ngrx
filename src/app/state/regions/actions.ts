@@ -14,7 +14,6 @@ export class Load implements Action {
 
 export class LoadSuccess implements Action {
   readonly type = RegionActionTypes.LoadSuccess;
-
   constructor(public payload: Region[]) {}
 }
 
