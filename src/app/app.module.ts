@@ -13,12 +13,14 @@ import { RegionsComponent } from './regions/regions.component';
 import { CountriesComponent } from './countries/countries.component';
 import { StateModule } from './state/state.module';
 import { FormsModule } from '@angular/forms';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegionsComponent,
-    CountriesComponent
+    CountriesComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,

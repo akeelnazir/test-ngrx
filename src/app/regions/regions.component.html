@@ -1,11 +1,14 @@
 <mat-card>
-  <mat-form-field>
-    <mat-label>Region</mat-label>
-    <mat-select (valueChange)="onRegionSelectionChange($event)">
-      <mat-option
-        *ngFor="let region of regions$ | async"
-        [value]="region"> {{region.name}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <app-dropdown
+    [label]="'Regions'"
+    [items]="regions$ | async"
+    (selectionChanged)="onRegionSelectionChange($event)"
+  ></app-dropdown>
+
+  <ng-container *ngIf="(region$ | async) as region">
+    <pre>
+      {{ region | json }}
+    </pre>
+  </ng-container>
+
 </mat-card>

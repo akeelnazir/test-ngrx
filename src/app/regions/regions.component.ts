@@ -11,11 +11,13 @@ import { RegionsFacade } from './state/facade';
 })
 export class RegionsComponent implements OnInit {
   regions$: Observable<Region[]>;
+  region$: Observable<Region>;
 
   constructor(private regionsFacade: RegionsFacade) { }
 
   ngOnInit(): void {
     this.regions$ = this.regionsFacade.regions$;
+    this.region$ = this.regionsFacade.getSelectedRegion$;
   }
 
   onRegionSelectionChange(event: Region) {
