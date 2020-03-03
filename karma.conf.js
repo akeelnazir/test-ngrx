@@ -15,6 +15,20 @@ module.exports = function (config) {
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
+    browsers: ['ChromeHeadless'],
+    customLaunchers: {
+      ChromeHeadless: {
+        base: 'Chrome',
+        flags: [
+          // See https://chromium.googlesource.com/chromium/src/+/lkgr/headless/README.md
+          '--headless',
+          '--disable-gpu',
+          '--no-sandbox', // Needed as we run Google Chrome as root in a container
+          // Without a remote debugging port, Google Chrome exits immediately.
+          ' --remote-debugging-port=9222'
+        ]
+      }
+    },
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, './coverage/test-hcl'),
       reports: ['html', 'lcovonly', 'text-summary'],
@@ -25,7 +39,6 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
     singleRun: true,
     restartOnFileChange: true
   });
